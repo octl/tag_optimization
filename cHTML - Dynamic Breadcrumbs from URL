@@ -1,0 +1,11 @@
+<script>
+  (function(){
+var element = document.querySelector('.rank-math-schema-pro');
+   var newScript = document.createElement("script");
+   newScript.type = "application/ld+json";
+   newScript.id = "gtm-dynamic-schema-breadcrumb";
+   newScript.innerHTML = JSON.stringify({{cJS Variable - Create Breadcrumbs}});
+
+  element.parentNode.insertBefore(newScript, element.nextSibling);
+  })();
+</script>
