@@ -1,0 +1,35 @@
+function createBreadcrumbs() {
+  var breadcrumbList = {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": []
+};
+  var url = window.location.origin;
+  var breadcrumbs = [];
+  var pathname = window.location.pathname;
+  var paths = pathname.split("/");
+  
+  for (var i = 0; i < paths.length; i++) {
+    var path = paths[i];
+    var breadcrumb = {};
+    breadcrumb.name = path||"Home";
+    breadcrumb.link = url+paths.slice(0, i + 1).join("/");
+    breadcrumbs.push(breadcrumb);
+  }
+  
+  
+ for (var i = 0; i < breadcrumbs.length; i++) {
+  var breadcrumb = breadcrumbs[i];
+  var listItem = {
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@id": breadcrumb.link,
+      "name": breadcrumb.name
+    }
+  };
+  breadcrumbList.itemListElement.push(listItem);
+ }
+
+return breadcrumbList;
+}
